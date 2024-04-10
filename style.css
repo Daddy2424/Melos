@@ -16,7 +16,7 @@ nav{
   background-color: #EFBC9B;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
+  padding: 16px;
 }
 
 nav a{
@@ -28,12 +28,17 @@ nav a{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 10em;
+  margin-left: 6em;
   cursor: default;
 }
 
-.logo h2{
+.logo button{
   font-family: "M PLUS 1 Code", monospace;
+  background: none;
+  border: none;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: default;
 }
 
 .links{
@@ -96,7 +101,7 @@ button{
   justify-content: center;
   align-items: center;
   gap: 2em;
-  margin-top: 6em;
+  margin-top: 5em;
   margin-bottom: 2em
 }
 
@@ -130,7 +135,7 @@ button{
   .container {
     width: 80%;
     right: 2%;
-    top: 6%;
+    top: 11%;
   }
 
   .blogs {
