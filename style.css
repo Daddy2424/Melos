@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Ubuntu&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@100..700&display=swap');
+
+*{
+  margin: 0px;
+  padding: 0px;
+}
+
+body{
+  font-family: 'Poppins', sans-serif;
+  background-color: #FBF3D5;
+}
+
+nav{
+  background-color: #EFBC9B;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+nav a{
+  text-decoration: none;
+  color: white;
+}
+
+.logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10em;
+  cursor: default;
+}
+
+.logo h2{
+  font-family: "M PLUS 1 Code", monospace;
+}
+
+.links{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 16em;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  width: 20%;
+  position: absolute;
+  top: 20%;
+  right: 0%;
+  padding: 10px;
+  padding-bottom: 20px;
+  margin-right: 5em;
+  margin-top: 2em;
+}
+
+.container h1{
+  margin: 20px;
+}
+
+.container input{
+  padding: 13px;
+  background: none;
+  border-radius: 5px;
+  border: none;
+  background-color: #D6DAC8;
+  color: black;
+}
+
+.container textarea{
+  background: none;
+  border: none;
+  background-color: #D6DAC8;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+button{
+  padding: 10px;
+  cursor: pointer;
+  background-color: whitesmoke;
+  margin-top: 10px;
+}
+
+.blogs{
+  width: 100%;
+  height: 100%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  margin-top: 6em;
+  margin-bottom: 2em
+}
+
+.blogchild{
+  background-color: whitesmoke;
+  width: 90%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.name{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.blogData{
+  opacity: .8;
+}
+
