@@ -118,3 +118,35 @@ button{
   opacity: .8;
 }
 
+@media screen and (max-width: 768px) {
+
+  .logo{
+    margin-left: 1em;
+  }
+  .links{
+    margin-right: 2em;
+  }
+
+  .container {
+    width: 80%;
+    right: 2%;
+    top: 6%;
+  }
+
+  .blogs {
+    width: 90%;
+    margin-top: 25em;
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .container {
+    width: 90%;
+    margin: 2em auto;
+  }
+
+  .blogs {
+    width: 95%;
+  }
+}
