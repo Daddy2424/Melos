@@ -8,6 +8,8 @@
 </head>
 <body>
 
+  <!-- <a  href="https://icons8.com/icon/7874/send">Send</a> icon by <a href="https://icons8.com">Icons8</a> -->
+
   <header>
     <nav>
       <div class="logo">
@@ -23,23 +25,37 @@
     </div>
 
     <div class="container">
-      <h1>Post Your Blog</h1>
       <div class="signin" id="sign">
         <input type="text" placeholder="User name please" id="name">
         <button id="signInBtn">SignIn</button>
       </div>
-      <div class="data">
-        <textarea name="blog" id="blog" cols="30" rows="5" placeholder="Write your blog here!"></textarea>
+      <div class="data" id="buttons">
+        <div class="texting">
+          <input type="text" id="blog" placeholder="type here..">
+        </div>
+
+        <div class="buttons">
+          <button onclick="storeData()" class="sendBtn">
+            <img width="35" height="35" src="https://img.icons8.com/ios-filled/50/FFFFFF/sent.png" alt="sent"/>
+          </button>
+          <!-- <button onclick="deleteData()" class="deleteBtn">Delete Blog</button> -->
+        </div>
       </div>
 
-      <div class="buttons">
-        <button onclick="storeData()">Post Blog</button>
-        <button onclick="deleteData()">Delete Blog</button>
-      </div>
     </div>
     
     
   </section>
+
+  <div class="notice" id="notice">
+
+  </div>
+
+
+  <footer>
+  </footer>
+
+  
 
   
   <script src="script.js"></script>
