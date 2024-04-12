@@ -1,11 +1,15 @@
+
 const body = document.body;
 const name = document.getElementById('name');
 const blog = document.getElementById('blog');
 const blogsContainer = document.getElementById('blogs');
 const admin = document.getElementById('admin');
+const signInBtn = document.getElementById('signInBtn');
+const signContainer = document.getElementById('sign');
 
 let god = 'Deepak Poly';
 let count = true;
+
 
 admin.addEventListener('click', ()=>{
   if(count == true){
@@ -22,12 +26,14 @@ function playNotificationSound() {
   audio.play();
 }
 
-
+let userName  ;
+let userNameEntered = false;
 
 async function storeData(){
 
-  let nameVal = name.value;
+  let nameVal = userName;
   let blogVal = blog.value;
+
 
   const postData = {
     name : nameVal,
@@ -47,12 +53,18 @@ async function storeData(){
   }
   name.value = ' ';
   blog.value = ' ';
+  
   showData();
   
 }
+
+
+
 let times = 0;
 
 let previousMessageCount = 0;
+
+// show data
 async function showData(){
 
   const response = await fetch('/api/showData',{
@@ -85,7 +97,7 @@ async function showData(){
 
     let nameStyle  = document.createElement('p');
     nameStyle.classList.add('name');
-    nameStyle.textContent = responseData[i].name
+    nameStyle.textContent = responseData[i].name;
     
 
     let blogdata = document.createElement('p');
@@ -115,6 +127,8 @@ const mockingStatements = [
 ];
 
 async function deleteData() {
+
+  name.readOnly = false;
   const nameVal = name.value;
   const postData = {
     name: nameVal
@@ -168,7 +182,60 @@ async function deleteData() {
   } catch (error) {
     console.error('Error:', error);
   }
+  
 }
+
+signInBtn.addEventListener('click', async ()=>{
+
+  let nameVal = name.value;
+
+  let user = {
+    id : 0,
+    name : nameVal
+  }
+  
+  // storing username
+  await fetch('/api/signin',{
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(user)
+  });
+
+  // if(!response.ok){
+  //   alert("Failed to store user.")
+  // }
+
+  // getting username
+
+
+  setTimeout(async () => {
+    try {
+        const response = await fetch('/api/userdata', {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to submit form');
+        }
+
+        const responseData = await response.json();
+        userName = responseData[0].name;
+        console.log(userName);
+
+        signContainer.style.display = 'none';
+    } catch (error) {
+        console.error('Error:', error.message);
+        alert('Failed to fetch userdata');
+    }
+}, 2000); // Adjust the timeout duration as needed
+});
+
+
 
 
 
