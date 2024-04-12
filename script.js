@@ -224,7 +224,12 @@ signInBtn.addEventListener('click', async ()=>{
         }
 
         const responseData = await response.json();
-        userName = responseData[0].name;
+
+        for(let i =0; i< responseData.length; i++){
+          if(userName != responseData[i].name){
+            userName = responseData[i].name;
+          }
+        }
         console.log(userName);
 
         signContainer.style.display = 'none';
