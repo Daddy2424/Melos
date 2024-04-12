@@ -15,7 +15,7 @@ app.get('/', (req, res) =>{
 })
 
 
-// getting storedData
+// storeing Data
 app.post('/api/storeData', async (req, res)=>{
 
   const existingData = await fs.readFile('blogs.json', 'utf8');
@@ -29,10 +29,8 @@ app.post('/api/storeData', async (req, res)=>{
   console.log('Parsed JSON:', jsonData);
 
   const newData = req.body;
+
   jsonData.push(newData);
-
-  
-
   await fs.writeFile('blogs.json', JSON.stringify(jsonData,null,2));
 
   res.status(200).json({message : 'data stored succesfully'});
@@ -83,3 +81,46 @@ app.post('/api/deleteData', async(req,res)=>{
 app.listen(port,()=>{
   console.log(`server listeniing in port : http://localhost:${port}`);
 })
+
+// username storing
+app.post('/api/signin', async (req, res)=>{
+
+  const existingData = await fs.readFile('users.json', 'utf8');
+  console.log('Existing Data:', existingData);
+
+  let jsonData = [];
+  let id = 1;
+
+  if(existingData){
+    jsonData = JSON.parse(existingData);
+  }
+
+  console.log('Parsed JSON:', jsonData);
+
+  let newData = req.body;
+
+
+  for (let i = 0; i < existingData.length; i++){
+    if(newData.name != existingData[i].name){
+      newData.id = i;
+    }
+  }
+
+
+  jsonData.push(newData);
+  await fs.writeFile('users.json', JSON.stringify(jsonData,null,2));
+
+  res.status(200).json({message : 'data stored succesfully'});
+
+})
+
+
+app.get('/api/userdata', async(req,res)=>{
+  
+  const Data = await fs.readFile('users.json', 'utf8'); 
+  jsonData = JSON.parse(Data);
+
+  res.json(jsonData);
+
+})
+
