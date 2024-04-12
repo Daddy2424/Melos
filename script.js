@@ -6,6 +6,8 @@ const blogsContainer = document.getElementById('blogs');
 const admin = document.getElementById('admin');
 const signInBtn = document.getElementById('signInBtn');
 const signContainer = document.getElementById('sign');
+const buttons = document.getElementById('buttons');
+const notice = document.getElementById('notice');
 
 let god = 'Deepak Poly';
 let count = true;
@@ -34,7 +36,10 @@ async function storeData(){
   let nameVal = userName;
   let blogVal = blog.value;
 
-
+  if(blogVal == ''){
+    alert("no message to post!")
+    return;
+  }
   const postData = {
     name : nameVal,
     blog : blogVal,
@@ -86,14 +91,41 @@ async function showData(){
     playNotificationSound();
     
     previousMessageCount = responseData.length;
+
   }
 
-  blogsContainer.innerHTML = '';
+  
 
-  for(let i = responseData.length - 1; i >= 0; i--){
+
+// Add the 'new' class only to the most recent blog entry
+    
+    blogsContainer.innerHTML = '';
+    notice.innerHTML = '';
+
+
+    let nameStyle  = document.createElement('p');
+    nameStyle.classList.add('name');
+    nameStyle.textContent = responseData[0].name;
+
+
+    let blogdata = document.createElement('p');
+    blogdata.textContent = responseData[0].blog;
+    blogdata.classList.add('blogData');
+
+
+    notice.appendChild(nameStyle);
+    notice.appendChild(blogdata);
+
+
+
+
+
+  for(let i = responseData.length - 1; i >= 1; i--){
 
     let blog = document.createElement('div');
     blog.classList.add('blogchild');
+
+
 
     let nameStyle  = document.createElement('p');
     nameStyle.classList.add('name');
@@ -189,6 +221,11 @@ signInBtn.addEventListener('click', async ()=>{
 
   let nameVal = name.value;
 
+  if(nameVal == ''){
+    alert("Please enter your name (or any name!) to sign in.")
+    return;
+  }
+
   let user = {
     id : 0,
     name : nameVal
@@ -233,6 +270,9 @@ signInBtn.addEventListener('click', async ()=>{
         console.log(userName);
 
         signContainer.style.display = 'none';
+        buttons.style.display = 'flex';
+        notice.style.display = 'none';
+        blogsContainer.style.display = 'flex';
     } catch (error) {
         console.error('Error:', error.message);
         alert('Failed to fetch userdata');
