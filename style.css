@@ -245,7 +245,8 @@ footer{
 
   .signin {
     left: 20%; /* Adjust left position */
-    bottom: 2%; /* Adjust bottom position */
+    bottom: 2%; 
+    width: 100%;/* Adjust bottom position */
   }
 
   .texting input {
@@ -253,7 +254,7 @@ footer{
   }
 
   .data {
-    left: 30%; /* Adjust left position */
+    left: 15%; /* Adjust left position */
     bottom: 0%; /* Adjust bottom position */
   }
 
@@ -265,6 +266,10 @@ footer{
 
   .blogchild{
     width: 90%;
+  }
+
+  .notice{
+    left: 10%;
   }
 
 }
